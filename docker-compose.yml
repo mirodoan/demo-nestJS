@@ -1,11 +1,12 @@
 version: '3.8'
+
 services:
   db:
     image: postgres:15
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 123456
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: mydb
     ports:
       - '5432:5432'
@@ -17,11 +18,12 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://postgres:123456@db:5432/mydb
+      DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@db:5432/mydb
+      NODE_ENV: production
     ports:
       - '3000:3000'
     command: >
-      sh -c "npx typeorm migration:run -d dist/data-source.js && node dist/main.js"
+      sh -c "sleep 5 && npx typeorm migration:run -d dist/data-source.js && npm run start:prod"
 
 volumes:
   db_data:
