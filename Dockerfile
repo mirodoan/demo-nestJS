@@ -17,6 +17,13 @@ WORKDIR /app
 # Copy only built code and necessary files
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/src/data-source.ts ./src/data-source.ts
+COPY --from=builder /app/src/migrations ./src/migrations
+COPY --from=builder /app/package.json ./package.json
+
+# Copy start script
+COPY start.sh ./start.sh
+RUN chmod +x start.sh
 
 # Set environment variables
 ENV NODE_ENV=production
@@ -24,5 +31,5 @@ ENV NODE_ENV=production
 # Optional: run app as non-root user for safety
 USER node
 
-# Run the app
-CMD ["node", "dist/main.js"]
+# Run the app with migration
+CMD ["./start.sh"]

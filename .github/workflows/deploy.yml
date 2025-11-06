@@ -37,15 +37,6 @@ jobs:
           echo "🚀 Pushing Docker image to ECR..."
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
-      # 4.5️⃣ Install dependencies & run migration
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run TypeORM migration
-        run: npm run migration:run
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
       # 5️⃣ Update ECS task definition (inject image mới)
       - name: Update ECS task definition
         id: task-def
