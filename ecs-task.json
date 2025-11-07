@@ -1,6 +1,7 @@
 {
   "family": "miro-task",
   "networkMode": "awsvpc",
+  "enableExecuteCommand": true,
   "containerDefinitions": [
     {
       "name": "miroapp",
@@ -16,6 +17,7 @@
         }
       ],
       "essential": true,
+      "initProcessEnabled": true,
       "environment": [
         {
           "name": "JWT_SECRET",
