@@ -54,3 +54,9 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# AWS CLI và Session Manager files
+AWSCLIV2.pkg
+sessionmanager-bundle/
+sessionmanager-bundle.zip
+ecs-exec-policy.json
