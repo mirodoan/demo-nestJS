@@ -23,7 +23,7 @@
         },
         {
           "name": "DATABASE_URL",
-          "value": "postgres://postgres:Timo9356@database-1.c6jgg2maa55n.us-east-1.rds.amazonaws.com:5432/postgres"
+          "value": "postgres://postgres:Timo9356@database-1.c6jgg2maa55n.us-east-1.rds.amazonaws.com:5432/postgres?sslmode=require"
         }
       ],
       "environmentFiles": [],
