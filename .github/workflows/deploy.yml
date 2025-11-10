@@ -13,6 +13,12 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
 
+      # 🧪 Run API tests
+      - name: Run API tests
+        run: |
+          npm ci
+          npm run test
+
       # 2️⃣ Configure AWS credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
